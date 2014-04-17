@@ -20,8 +20,10 @@
 .include 'OPamps/LF411C.lib'
 
 *DC Sources
-Vplus 8 0 DC 18V
-Vminus 7 0 DC 0V
+Vplus 8 0 DC 9V
+Vminus 0 7 DC 9V
+
+Vsweep 1 0 AC 1V
 
 *OP amps
 Xopamp1 3 4 8 7 6 LF411C
@@ -31,14 +33,15 @@ R1 1 2 10k
 R2 3 0 100k
 R3 4 0 1k
 R4 4 5 10k
-R5 6 5 0
+R5 6 5 1
 
 *C values
 C1 2 3 0.1u
 
 *analysis
 .OP
+.AC DEC 10 1 500k
+.PRINT gain = PAR('Vdb(5)-Vdb(1)')
 
 .OPTION NOMOD POST
-
 .END

@@ -1,0 +1,303 @@
+Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hspice final.sp
+ ****** HSPICE -- D-2010.03-SP1 32-BIT (May 27 2010) linux ******               
+  Copyright (C) 2010 Synopsys, Inc. All Rights Reserved.                        
+  Unpublished-rights reserved under US copyright laws.
+  This program is protected by law and is subject to the 
+  terms and conditions of the license agreement from Synopsys.
+  Use of this program is your acceptance to be bound by the 
+  license agreement. HSPICE is the trademark of Synopsys, Inc.
+  Input File: final.sp                                                          
+ lic:  
+ lic: FLEXlm: v8.5b 
+ lic: USER:   esamuels             HOSTNAME: laplace 
+ lic: HOSTID: 001b245d5b09         PID:      5260 
+ lic: Using FLEXlm license file: 
+ lic: 5280@val2 
+ lic: Checkout 1 hspice 
+ lic: License/Maintenance for hspice will expire on 19-apr-2014/2013.12 
+ lic: FLOATING license(s) on SERVER val2 
+ lic:   
+ Init: read install configuration file: /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/meta.cfg
+  **warning** (OPamps/LF411C.lib:15) dc      may cause confusion with .dc
+1****** HSPICE -- D-2010.03-SP1 32-BIT (May 27 2010) linux ******               
+ ******  
+ 
+
+  ******  circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 xopamp1.                        lf411c             1.00 
+ 
+ **warning** To avoid producing hard-to-solve matrix equations, connect gdcpath from node        0:2                defined in subckt 0               
+      
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 3         bypass  = 2         
+  Opening plot unit= 15
+ file=final.pa0                                                                
+
+1****** HSPICE -- D-2010.03-SP1 32-BIT (May 27 2010) linux ******               
+ ******  
+ 
+
+  ******  operating point information tnom=  25.000 temp=  25.000 *****
+ ***** operating point status is all       simulation time is     0.     
+    node    =voltage      node    =voltage      node    =voltage
+
+ +0:1       =   0.      0:2       =   0.      0:3       =  -3.4030u
+ +0:4       =  -1.4953u 0:5       = -16.1077u 0:6       = -16.1092u
+ +0:7       =  -9.0000  0:8       =   9.0000  1:6       =   2.2969n
+ +1:7       = -16.1822u 1:8       = -16.1822u 1:9       =   0.     
+ +1:10      =-375.0426m 1:11      =  -8.6546  1:12      =  -8.6546 
+ +1:53      =   6.8000  1:54      =  -6.8000  1:90      =  -1.4612u
+ +1:91      =  30.0000  1:92      = -30.0000  1:99      =   0.     
+
+
+ ****  voltage sources
+
+ subckt                                    xopamp1    xopamp1    xopamp1   
+ element  0:vplus    0:vminus   0:vsweep   1:vb       1:vc       1:ve      
+  volts      9.0000     9.0000     0.         0.         2.2000     2.2000 
+  current   -1.3950m   -1.3954m    0.        22.9694f    6.8008p    6.8008p
+  power     12.5550m   12.5583m    0.         0.       -14.9618p  -14.9617p
+
+ subckt   xopamp1    xopamp1    xopamp1   
+ element  1:vlp      1:vln      1:vlim    
+  volts     30.0000    30.0000     0.     
+  current  -30.0008p  -30.0008p   -1.4612n
+  power    900.0240p  900.0240p    0.     
+
+     total voltage source power dissipation=   25.1133m       watts
+
+
+
+ ***** current sources
+
+ subckt   xopamp1   
+ element  1:iss     
+  volts      9.3750 
+  current  195.0000u
+  power     -1.8281m
+
+
+     total current source power dissipation=  -1.8281m       watts
+
+ **** resistors
+
+ subckt                                                          xopamp1   
+ element  0:r1       0:r2       0:r3       0:r4       0:r5       1:r2      
+  r value   10.0000k  100.0000k    1.0000k   10.0000k    1.0000   100.0000k
+  v drop     0.        -3.4030u   -1.4953u   14.6124u   -1.4612n    2.2969n
+  current    0.       -34.0296p   -1.4953n    1.4612n   -1.4612n   22.9694f
+  power      0.       115.8016a    2.2359f   21.3523f    2.1352a  5.276e-23
+
+ subckt   xopamp1    xopamp1    xopamp1    xopamp1    xopamp1    xopamp1   
+ element  1:rd1      1:rd2      1:ro1      1:ro2      1:rp       1:rss     
+  r value    3.5360k    3.5360k   50.0000    25.0000    15.0000k    1.0260x
+  v drop  -345.4053m -345.4074m  -73.0622n  -16.1822u   18.0000  -375.0426m
+  current  -97.6825u  -97.6831u   -1.4612n -647.2895n    1.2000m -365.5386n
+  power     33.7401u   33.7405u  106.7617a   10.4746p   21.6000m  137.0925n
+
+
+ **** voltage-controlled current sources
+
+
+ subckt     xopamp1    xopamp1 
+ element  1:ga       1:gcm     
+  v drop     2.2969n   -2.2969n
+  current -596.3406p -596.3177p
+
+
+
+
+ **** voltage-controlled voltage sources
+
+
+ subckt     xopamp1 
+ element  1:egnd    
+  volts      0.     
+  current -364.0773n
+
+
+
+
+ **** current-controlled current sources
+
+
+   subckt   xopamp1 
+ element  1:fb      
+  current  648.7507n
+
+
+
+
+ **** current-controlled voltage sources
+
+
+ subckt     xopamp1 
+ element  1:hlim    
+  volts     -1.4612u
+  current    2.9225a
+
+
+
+
+ **** diodes
+
+
+ subckt     xopamp1    xopamp1    xopamp1    xopamp1    xopamp1 
+ element  1:dc       1:de       1:dlp      1:dln      1:dp      
+ model    1:dx       1:dx       1:dx       1:dx       1:dx      
+  id      -800.0000a -800.0000a -800.0000a -800.0000a -800.0000a
+  vd        -6.8000    -6.8000   -30.0000   -30.0000   -18.0000 
+  req        0.         0.         0.         0.         0.     
+  cap        0.         0.         0.         0.         0.     
+
+
+
+
+ **** jfets
+
+
+ subckt     xopamp1    xopamp1 
+ element  1:j1       1:j2      
+ model    1:jx       1:jx      
+  ids      -97.6825u  -97.6831u
+  igs       12.5000p   12.5000p
+  igd       12.5000p   12.5000p
+  vgs      375.0411m  375.0392m
+  vds       -8.2796    -8.2795 
+  gm       312.7608u  312.7617u
+  gmbs       0.         0.     
+  gds        0.         0.     
+  cgs        0.         0.     
+  cgd        0.         0.     
+
+
+
+ ******  
+ 
+
+  ******  ac analysis tnom=  25.000 temp=  25.000 *****
+x
+
+        freq       gain    
+                           
+    1.00000      -3.2297   
+    1.25893      -1.2418   
+    1.58489     739.1700m  
+    1.99526       2.7092   
+    2.51189       4.6620   
+    3.16228       6.5883   
+    3.98107       8.4740   
+    5.01187      10.2988   
+    6.30957      12.0349   
+    7.94328      13.6469   
+   10.00000      15.0951   
+   12.58925      16.3430   
+   15.84893      17.3669   
+   19.95262      18.1644   
+   25.11886      18.7552   
+   31.62278      19.1740   
+   39.81072      19.4607   
+   50.11872      19.6519   
+   63.09573      19.7770   
+   79.43282      19.8578   
+  100.00000      19.9095   
+  125.89254      19.9425   
+  158.48932      19.9635   
+  199.52623      19.9767   
+  251.18864      19.9851   
+  316.22777      19.9904   
+  398.10717      19.9938   
+  501.18723      19.9959   
+  630.95734      19.9972   
+  794.32823      19.9981   
+    1.00000k     19.9986   
+    1.25893k     19.9989   
+    1.58489k     19.9990   
+    1.99526k     19.9991   
+    2.51189k     19.9991   
+    3.16228k     19.9990   
+    3.98107k     19.9988   
+    5.01187k     19.9984   
+    6.30957k     19.9978   
+    7.94328k     19.9968   
+   10.00000k     19.9951   
+   12.58925k     19.9926   
+   15.84893k     19.9886   
+   19.95262k     19.9822   
+   25.11886k     19.9720   
+   31.62278k     19.9561   
+   39.81072k     19.9308   
+   50.11872k     19.8912   
+   63.09573k     19.8290   
+   79.43282k     19.7323   
+  100.00000k     19.5832   
+  125.89254k     19.3570   
+  158.48932k     19.0208   
+  199.52623k     18.5358   
+  251.18864k     17.8627   
+  316.22777k     16.9711   
+  398.10717k     15.8487   
+  501.18723k     14.5057   
+y
+
+          ***** job concluded
+1****** HSPICE -- D-2010.03-SP1 32-BIT (May 27 2010) linux ******               
+ ******  
+ 
+
+  ******  job statistics summary tnom=  25.000 temp=  25.000 *****
+ 
+ 
+ ******  Machine Information  ******
+ CPU:
+ model name	: Dual-Core AMD Opteron(tm) Processor 2220
+ cpu MHz	: 2814.498
+ 
+ OS:
+ Linux version 2.6.18-348.6.1.el5 (mockbuild@builder10.centos.org) (gcc version 
+ 4.1.2 20080704 (Red Hat 4.1.2-54)) #1 SMP Tue May 21 15:29:55 EDT 2013
+
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count                  :     1
+  Available CPU Count                         :     4
+  Actual Model Evaluation(Load) Threads Count :     1
+  Actual Solver Threads Count                 :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =      22 # elements   =      37
+  # resistors   =      12 # capacitors =       3 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       2 # vcvs        =       1
+  # cccs        =       1 # ccvs       =       1 # volt_srcs   =       9
+  # curr_srcs   =       1 # diodes     =       5 # bjts        =       0
+  # jfets       =       2 # mosfets    =       0 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.00           1          26
+  ac analysis        0.00          58          58
+  readin             0.00
+  errchk             0.00
+  setup              0.01
+  output             0.00
+
+
+           total memory used          177  kbytes
+           total cpu time            0.01 seconds
+           total elapsed time        0.14 seconds
+           job started at     18:34:21 04/17/2014
+           job ended   at     18:34:22 04/17/2014
+
+
+ lic: Release hspice token(s) 
