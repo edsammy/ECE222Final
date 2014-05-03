@@ -18,6 +18,7 @@
 *include library files
 .include '../sedra_lib.lib'
 .include 'OPamps/LF411C.lib'
+.include 'OPamps/BUF634.LIB'
 
 *DC Sources
 Vplus 8 0 DC 9V
@@ -27,16 +28,18 @@ Vsweep 1 0 AC 1V
 
 *OP amps
 Xopamp1 3 4 8 7 6 LF411C
+*Xbuffer 6 9 8 7 9 BUF634
 
 *R values
 R1 1 2 10k
-R2 3 0 100k
+R2 3 0 75k
 R3 4 0 1k
 R4 4 5 10k
 R5 6 5 1
 
 *C values
-C1 2 3 0.1u
+C1 2 3 .1u
+C2 3 0 0.0009u
 
 *analysis
 .OP
