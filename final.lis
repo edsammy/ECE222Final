@@ -10,15 +10,15 @@ Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hsp
  lic:  
  lic: FLEXlm: v8.5b 
  lic: USER:   esamuels             HOSTNAME: laplace 
- lic: HOSTID: 001b245d5b09         PID:      5260 
+ lic: HOSTID: 001b245d5b09         PID:      15752 
  lic: Using FLEXlm license file: 
  lic: 5280@val2 
  lic: Checkout 1 hspice 
- lic: License/Maintenance for hspice will expire on 19-apr-2014/2013.12 
+ lic: License/Maintenance for hspice will expire on 19-apr-2015/2013.12 
  lic: FLOATING license(s) on SERVER val2 
  lic:   
  Init: read install configuration file: /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/meta.cfg
-  **warning** (OPamps/LF411C.lib:15) dc      may cause confusion with .dc
+  **warning** (OPamps/OPA2134.LIB:54) dc      may cause confusion with .dc
 1****** HSPICE -- D-2010.03-SP1 32-BIT (May 27 2010) linux ******               
  ******  
  
@@ -27,7 +27,8 @@ Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hsp
  circuit number to circuit name directory
    number circuitname                     definition         multiplier
         0 main circuit
-        1 xopamp1.                        lf411c             1.00 
+        1 xopamp1.                        opa2134            1.00 
+        2 xbuffer.                        opa551             1.00 
  
  **warning** To avoid producing hard-to-solve matrix equations, connect gdcpath from node        0:2                defined in subckt 0               
       
@@ -38,6 +39,20 @@ Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hsp
   Opening plot unit= 15
  file=final.pa0                                                                
 
+
+ **info** dc convergence failure, 
+ resetting dcon option to 1 and retrying
+
+ no convergence with standard algorithm,  trying damped pseudo-transient
+
+  *** initial damped pseudo transient completed. ***
+  *** final try started ***
+  *** final try succeeded *** 
+
+ **info** This was a difficult operating point.
+             You can speed up your simulation by specifying:
+             .OPTION CONVERGE=1
+
 1****** HSPICE -- D-2010.03-SP1 32-BIT (May 27 2010) linux ******               
  ******  
  
@@ -46,68 +61,288 @@ Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hsp
  ***** operating point status is all       simulation time is     0.     
     node    =voltage      node    =voltage      node    =voltage
 
- +0:1       =   0.      0:2       =   0.      0:3       =  -3.4030u
- +0:4       =  -1.4953u 0:5       = -16.1077u 0:6       = -16.1092u
- +0:7       =  -9.0000  0:8       =   9.0000  1:6       =   2.2969n
- +1:7       = -16.1822u 1:8       = -16.1822u 1:9       =   0.     
- +1:10      =-375.0426m 1:11      =  -8.6546  1:12      =  -8.6546 
- +1:53      =   6.8000  1:54      =  -6.8000  1:90      =  -1.4612u
- +1:91      =  30.0000  1:92      = -30.0000  1:99      =   0.     
+ +0:1       =   0.      0:2       =   0.      0:3       =-714.2351n
+ +0:4       =   4.3486u 0:5       =  47.9303u 0:6       =  47.9303u
+ +0:7       =  -9.0000  0:8       =   9.0000  0:9       = 189.3387u
+ +0:10      =   8.1104  1:6       = -31.2227n 1:7       =  48.0239u
+ +1:8       =  48.0239u 1:9       =   0.      1:10      =-718.0544m
+ +1:11      =  -8.8001  1:12      =  -8.8001  1:53      =   7.8000 
+ +1:54      =  -8.1000  1:90      =   4.6812u 1:91      =  40.0000 
+ +1:92      = -40.0000  1:99      =   0.      2:33      =   8.9998 
+ +2:34      = 930.7178u 2:35      =   9.0002  2:36      = 930.7175u
+ +2:37      = 999.9959m 2:38      = 664.6727m 2:39      = 665.2790m
+ +2:40      =   1.9337m 2:41      = 189.3396u 2:42      =   1.4748 
+ +2:43      =   1.4756  2:44      =   1.4748  2:45      =   1.9336m
+ +2:46      =  -1.5550m 2:47      =  -1.5550m 2:48      =   8.9999 
+ +2:49      =  -8.9999  2:50      = 591.5766m 2:51      = 591.5766m
+ +2:52      =  -9.0000  2:53      =   9.0000  2:54      = 709.8919m
+ +2:55      = 709.8919m 2:56      = 189.3387u 2:57      = -10.5635u
+ +2:58      =   9.0000  2:59      =  -9.0000  2:60      =  89.3876u
+ +2:61      =  89.3876u 2:62      = 899.9100u 2:63      =-899.9100u
+ +2:64      =   8.9379n 2:65      =  47.9307u 2:66      = 189.3387u
+ +2:67      = -10.5635u 2:68      = -33.0612u 2:69      =   0.     
+ +2:70      =   0.      2:71      =  -7.8000  2:72      = 189.4365u
+ +2:73      =  -7.8000  2:74      = 189.3387u 2:75      = 769.1386m
+ +2:76      =-664.9003m 2:77      = -10.5635u 2:78      =   3.2756 
+ +2:79      =   7.9902  2:80      =   9.0000  2:81      =  -6.0000 
+ +2:82      = 302.6325n 2:83      =   2.6337n 2:84      = 664.6700m
+ +2:85      = 650.6727m 2:87      = 450.6727m 2:88      =  29.9999 
+ +2:89      = -29.9999  2:90      = -14.9999  2:91      =  14.9999 
+ +2:92      = 877.9142p 2:93      = 877.8809p 2:94      =  -8.9949 
+ +2:95      =   9.0000  2:96      =  -8.0000  2:97      =  -8.0000 
+ +2:98      =   8.2859  2:99      =  -8.0000  2:100     =   8.3763m
+ +2:101     =   8.3766m 2:102     =  28.9208  2:103     =  28.9150 
+ +2:104     =  28.9091  2:105     =  28.7081  2:106     =  28.9209 
+ +2:107     =  28.9150  2:108     =  28.9091  2:109     = 148.7526 
+ +2:110     =  15.7753  2:111     = 300.0000  2:112     =   8.9945 
+ +2:113     =  -8.8218  2:114     =  -8.9999  2:115     = 157.8431 
+ +2:116     =  15.6862  2:117     =   1.2892k 2:118     =  15.0000 
+ +2:119     = -15.0000  2:120     =  53.9672  2:121     =   6.7753 
+ +2:122     =  15.7753  2:123     =  -8.9986  2:124     = 157.8431 
+ +2:125     =  15.6862  2:126     =   1.2892k 2:127     =  15.0000 
+ +2:128     = -15.0000  2:129     =  53.9672  2:130     = 650.7356m
+ +2:131     = -51.2644m 2:132     =   9.0000  2:133     = 610.6727m
+ +2:134     =-768.7599m 2:135     = 189.3445u 2:136     = 769.1286m
+ +2:137     =-768.7499m 2:138     =-189.3445u 2:139     = -63.7264m
+ +2:140     = 189.3445u 2:141     = -63.9158m 2:142     =  64.1051m
+ +2:143     = 189.3445u 2:144     =   2.0363  2:145     =  -1.7359 
+ +2:146     = 650.7342m 2:147     = -63.7264m 2:148     = 189.3451u
+ +2:149     =  64.1051m 2:150     =   1.7300  2:151     = 650.7355m
+ +2:152     = -49.2645m 2:153     =  28.1300  2:154     =  28.1300 
+ +2:155     =  26.9507  2:156     = -49.2645m 2:157     = 650.7355m
+ +2:158     = -49.2645m 2:159     =   7.3237  2:160     =   8.1100 
+ +2:161     =   4.1110u 2:162     =-999.9959m 2:163     =   0.     
 
 
  ****  voltage sources
 
  subckt                                    xopamp1    xopamp1    xopamp1   
  element  0:vplus    0:vminus   0:vsweep   1:vb       1:vc       1:ve      
-  volts      9.0000     9.0000     0.         0.         2.2000     2.2000 
-  current   -1.3950m   -1.3954m    0.        22.9694f    6.8008p    6.8008p
-  power     12.5550m   12.5583m    0.         0.       -14.9618p  -14.9617p
+  volts      9.0000     9.0000     0.         0.         1.2000   900.0000m
+  current   -9.0583m   -9.0588m    0.      -312.2265f    7.8008p    8.1008p
+  power     81.5243m   81.5295m    0.         0.        -9.3609p   -7.2908p
 
- subckt   xopamp1    xopamp1    xopamp1   
- element  1:vlp      1:vln      1:vlim    
-  volts     30.0000    30.0000     0.     
-  current  -30.0008p  -30.0008p   -1.4612n
-  power    900.0240p  900.0240p    0.     
+ subckt   xopamp1    xopamp1    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  1:vlp      1:vln      2:v63      2:v66      2:v67      2:v70     
+  volts     40.0000    40.0000   300.0000   -15.0000    15.0000   -15.0000 
+  current  -40.0008p  -40.0008p -284.3138u   61.4814p  131.3150m   61.4814p
+  power      1.6000n    1.6000n   85.2942m  922.2213p   -1.9697   922.2213p
 
-     total voltage source power dissipation=   25.1133m       watts
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:v71      2:v72      2:v74      2:v75      2:v76      2:v78     
+  volts     15.0000   702.0000m    0.         3.0000  -160.0000m    1.8000 
+  current  131.3150m  -51.2644n   36.0396p   24.0404p    1.9400u    7.2741p
+  power     -1.9697    35.9876n    0.       -72.1211p  310.4029n  -13.0934p
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:v79      2:v80      2:v112     2:v113     2:v114     2:v115    
+  volts      2.1000  -714.6500m  700.0000m   27.0000    26.4000   700.0000m
+  current    6.9737p   63.9158f  -49.2645n    1.1893p    1.7300p  -49.2645n
+  power    -14.6448p   45.6774f   34.4851n  -32.1107p  -45.6726p   34.4851n
+
+ subckt   xbuffer    xbuffer    xopamp1    xbuffer    xbuffer    xbuffer   
+ element  2:v116     2:v117     1:vlim     2:v18      2:v21      2:v23     
+  volts    890.0000m    1.0000     0.      -200.0000u    1.8000   200.0000m
+  current   50.5014n   -4.1110f    4.6812n    0.       799.9957u    2.3907u
+  power    -44.9463n    4.1110f    0.         0.        -1.4400m -478.1382n
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:v49      2:v50      2:v51      2:v52     
+  volts     15.0000   -15.0000     1.0000     1.1110u
+  current    0.         0.        -3.0000p  999.9959f
+  power      0.         0.         3.0000p   -1.1110a
+
+     total voltage source power dissipation=   -3.6925        watts
 
 
 
  ***** current sources
 
- subckt   xopamp1   
- element  1:iss     
-  volts      9.3750 
-  current  195.0000u
-  power     -1.8281m
+ subckt   xopamp1    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  1:iss      2:i8       2:i9       2:i10      2:i11      2:i19     
+  volts      9.7181  -591.5766m -591.5766m -709.8919m -709.8919m -650.6727m
+  current  160.0000u  100.0000u  100.0000u  100.0000u  100.0000u    1.0000m
+  power     -1.5549m   59.1577u   59.1577u   70.9892u   70.9892u  650.6727u
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:i20      2:i21      2:i22      2:i25      2:i41      2:i46     
+  volts     17.2859    18.0000  -650.7356m -650.7342m  -10.5635u -650.7355m
+  current  200.0000n  250.0000u    1.0000m    1.0000m   10.0000p    1.0000m
+  power     -3.4572u   -4.5000m  650.7356u  650.7342u  105.6346a  650.7355u
+
+ subckt   xbuffer    xbuffer    xbuffer   
+ element  2:i47      2:i48      2:i49     
+  volts   -650.7355m  189.3387u    7.3237 
+  current    1.0000m   10.0000p   50.0000n
+  power    650.7355u   -1.8934f -366.1826n
 
 
-     total current source power dissipation=  -1.8281m       watts
+     total current source power dissipation=  -2.5448m       watts
 
  **** resistors
 
  subckt                                                          xopamp1   
  element  0:r1       0:r2       0:r3       0:r4       0:r5       1:r2      
-  r value   10.0000k  100.0000k    1.0000k   10.0000k    1.0000   100.0000k
-  v drop     0.        -3.4030u   -1.4953u   14.6124u   -1.4612n    2.2969n
-  current    0.       -34.0296p   -1.4953n    1.4612n   -1.4612n   22.9694f
-  power      0.       115.8016a    2.2359f   21.3523f    2.1352a  5.276e-23
+  r value   10.0000k   75.0000k    1.0000k   10.0000k  100.0000u  100.0000k
+  v drop     0.      -714.2351n    4.3486u  -43.5816u  435.8162f  -31.2227n
+  current    0.        -9.5231p    4.3486n   -4.3582n    4.3582n -312.2265f
+  power      0.         6.8018a   18.9107f  189.9358f  1.899e-21  9.749e-21
 
  subckt   xopamp1    xopamp1    xopamp1    xopamp1    xopamp1    xopamp1   
  element  1:rd1      1:rd2      1:ro1      1:ro2      1:rp       1:rss     
-  r value    3.5360k    3.5360k   50.0000    25.0000    15.0000k    1.0260x
-  v drop  -345.4053m -345.4074m  -73.0622n  -16.1822u   18.0000  -375.0426m
-  current  -97.6825u  -97.6831u   -1.4612n -647.2895n    1.2000m -365.5386n
-  power     33.7401u   33.7405u  106.7617a   10.4746p   21.6000m  137.0925n
+  r value    2.4900k    2.4900k   20.0000    20.0000     7.5000k    1.2500x
+  v drop  -199.9116m -199.9188m   93.6243n   48.0239u   18.0000  -718.0544m
+  current  -80.2858u  -80.2887u    4.6812n    2.4012u    2.4000m -574.4435n
+  power     16.0501u   16.0512u  438.2759a  115.3147p   43.2000m  412.4817n
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r144     2:r158     2:r3       2:r4       2:r10      2:r11     
+  r value   24.0000    24.0000     2.0000     2.0000     1.0000k    1.0000k
+  v drop   201.0308m  201.0392m -799.9956u -799.9958u  661.7009p -661.7009p
+  current    8.3763m    8.3766m -399.9978u -399.9979u  661.7009f -661.7009f
+  power      1.6839m    1.6840m  319.9965n  319.9966n  4.378e-22  4.378e-22
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r12      2:r13      2:r22      2:r30      2:r31      2:r32     
+  r value  100.0000m  100.0000m  100.0000x    1.0000x    1.0000x    1.0000x
+  v drop   -93.0718u  -93.0717u  -18.0000     8.9991    -8.9991    89.3786u
+  current -930.7178u -930.7175u -180.0000n    8.9991u   -8.9991u   89.3786p
+  power     86.6236n   86.6235n    3.2400u   80.9838u   80.9838u    7.9885f
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r33      2:r34      2:r35      2:r36      2:r37      2:r46     
+  r value  100.0000   100.0000   100.0000     1.0000k    1.0000k    3.0000k
+  v drop  -899.9100u  899.9100u   -8.9379n   99.9511u   99.9510u   -1.2000 
+  current   -8.9991u    8.9991u  -89.3786p   99.9511n   99.9510n -399.9978u
+  power      8.0984n    8.0984n  7.989e-19    9.9902p    9.9902p  479.9947u
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r47      2:r59      2:r60      2:r62      2:r74      2:r75     
+  r value    3.0000k    1.8700     1.8700    10.0000k    1.0000x    1.0000g
+  v drop    -1.2000    -1.7443m   -1.7443m  299.9988n -664.6727m  -22.4978u
+  current -399.9979u -932.7860u -932.7857u   29.9999p -664.6727n  -22.4978f
+  power    479.9950u    1.6271u    1.6271u    8.9999a  441.7899n  5.061e-19
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r76      2:r77      2:r78      2:r79      2:r83      2:r127    
+  r value    1.0000g    1.0000g    1.0000g    1.0000g    1.0000g  1.000e+12
+  v drop    80.9919u -429.0174p    0.        -2.6337n   89.3876u   29.9999 
+  current   80.9919f -4.290e-19    0.        -2.6337a   89.3876f   29.9999p
+  power      6.5597a  1.841e-28    0.       6.936e-27    7.9901a  899.9926p
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r128     2:r129     2:r130     2:r131     2:r132     2:r133    
+  r value  1.000e+12  1.000e+12  1.000e+12   10.0000k    1.0000x  1.000e+12
+  v drop   -29.9999   877.9142p  877.8809p  -17.9949    -3.0000u -999.9959m
+  current  -29.9999p  8.779e-22  8.779e-22   -1.7995m   -3.0000p -999.9959f
+  power    899.9926p    0.         0.        32.3815m    8.9999a  999.9918f
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r136     2:r137     2:r138     2:r139     2:r140     2:r141    
+  r value    1.0000x    1.0000x    1.0000x    1.0000x    1.0000x    1.0000x
+  v drop    -8.9998  -930.7178u   -8.3763m   -9.0002  -930.7175u   -8.3766m
+  current   -8.9998u -930.7178p   -8.3763n   -9.0002u -930.7175p   -8.3766n
+  power     80.9966u  866.2356f   70.1621p   81.0034u  866.2350f   70.1680p
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r142     2:r143     2:r156     2:r157     2:r165     2:r166    
+  r value  700.0000m  700.0000m  700.0000m  700.0000m    1.0000x    8.4000x
+  v drop     5.8634m    5.8634m    5.8636m    5.8636m -157.7526    -8.9945 
+  current    8.3763m    8.3763m    8.3766m    8.3766m -157.7526u   -1.0708u
+  power     49.1135u   49.1135u   49.1176u   49.1176u   24.8859m    9.6311u
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r167     2:r169     2:r172     2:r173     2:r174     2:r175    
+  r value  100.0000k    1.0000x    1.0000x    1.0000x   10.0000k  100.0000x
+  v drop   -17.9999  -178.1633m  142.1569   142.1569     1.2734k    5.4677m
+  current -179.9986u -178.1633n  142.1569u  142.1569u  127.3447m   54.6765p
+  power      3.2400m   31.7422n   20.2086m   20.2086m  162.1668   298.9525f
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r176     2:r177     2:r178     2:r180     2:r181     2:r182    
+  r value   10.0000k    1.0000x  100.0000k    1.0000x    1.0000x   10.0000k
+  v drop   -38.2810   -15.7753   -17.9986   142.1569   142.1569     1.2734k
+  current   -3.8281m  -15.7753u -179.9857u  142.1569u  142.1569u  127.3447m
+  power    146.5436m  248.8588u    3.2395m   20.2086m   20.2086m  162.1667 
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r183     2:r184     2:r185     2:r186     2:r187     2:r188    
+  r value   10.0000k  100.0000x    1.0000x    1.0000x    1.0000g    1.0000g
+  v drop   -38.2810   -17.8164    51.2644m  -28.7081   -53.9672     1.2892k
+  current   -3.8281m -178.1637n   51.2644n  -28.7081u  -53.9672n    1.2892u
+  power    146.5436m    3.1742u    2.6280n  824.1542u    2.9125u    1.6621m
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r189     2:r190     2:r195     2:r196     2:r199     2:r201    
+  r value    1.0000g    1.0000g    1.0000g    1.0000x  400.0000k  100.0000k
+  v drop   -53.9672     1.2892k -999.9959m  664.6727m   -6.0648u   -2.1018u
+  current  -53.9672n    1.2892u -999.9959p  664.6727n  -15.1620p  -21.0180p
+  power      2.9125u    1.6621m  999.9918p  441.7899n   91.9548a   44.1755a
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r302     2:r304     2:r305     2:r308     2:r309     2:r314    
+  r value    3.0000     1.0000x    1.0000x    1.0000g    1.0000g    1.0000g
+  v drop   961.1648p -450.6727m -610.6727m -664.6700m -664.6700m   -1.0098 
+  current  320.3883p -450.6727n -610.6727n -664.6700p -664.6700p   -1.0098n
+  power    3.079e-19  203.1059n  372.9212n  441.7862p  441.7862p    1.0198n
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r315     2:r316     2:r317     2:r318     2:r319     2:r320    
+  r value    1.0000g   10.0000m   10.0000m   10.0000    10.0000     2.0000k
+  v drop   714.1168m   -9.9793u   -9.9793u  189.3445u -189.3445u  600.7575p
+  current  714.1168p -997.9276u -997.9276u   18.9344u  -18.9345u  300.3787f
+  power    509.9628p    9.9586n    9.9586n    3.5851n    3.5851n  1.805e-22
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r321     2:r325     2:r326     2:r327     2:r328     2:r329    
+  r value    2.0000g    1.0000g    1.0000g  1.000e+12  1.000e+12  1.000e+12
+  v drop  -189.3451u   63.9158m   63.9158m  189.3445u   63.7264m  -64.1051m
+  current  -94.6725f   63.9158p   63.9158p  189.3445a   63.7264f  -64.1051f
+  power     17.9258a    4.0852p    4.0852p  3.585e-20    4.0611f    4.1095f
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r330     2:r331     2:r332     2:r333     2:r334     2:r335    
+  r value  1.000e+12    1.0000x    1.0000x    1.0000x    1.0000x    1.0000g
+  v drop    63.9158m   49.2645m  -28.1300    -2.9193u   49.2645m   49.2645m
+  current   63.9158f   49.2645n  -28.1300u   -2.9193p   49.2645n   49.2645p
+  power      4.0852f    2.4270n  791.2983u    8.5224a    2.4270n    2.4270p
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:r336     2:r337     2:r339     2:r340     2:r341     2:r342    
+  r value  1.000e+12    1.0000g    1.0000g    1.0000g    4.4000k    4.4000k
+  v drop    -1.7300  -786.3470m  999.9959m   -4.1110u  1.694e-21    0.     
+  current   -1.7300p -786.3470p  999.9959p   -4.1110f  3.850e-25    0.     
+  power      2.9930p  618.3416p  999.9918p  1.690e-20    0.         0.     
+
+ subckt   xbuffer    xbuffer   
+ element  2:r343     2:r344    
+  r value  200.0000   1.000e+12
+  v drop     0.         8.1104 
+  current    0.         8.1104p
+  power      0.        65.7785p
 
 
  **** voltage-controlled current sources
 
 
- subckt     xopamp1    xopamp1 
- element  1:ga       1:gcm     
-  v drop     2.2969n   -2.2969n
-  current -596.3406p -596.3177p
+ subckt     xopamp1    xopamp1    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  1:ga       1:gcm      2:g2       2:g11      2:g14      2:g16     
+  v drop   -31.2227n   31.2227n -199.9021u   18.0000    16.9902    28.9208 
+  current   -2.8863n   -2.8866n    0.         5.3174m  799.9967u   -8.3763m
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:g17      2:g19      2:g20      2:g21      2:g22      2:g23     
+  v drop    28.9209  -189.3445u  189.3445u  189.3451u    8.2309     8.2312 
+  current   -8.3766m   18.9344u  -18.9344u -395.0513f  999.9959u  999.9959u
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer 
+ element  2:g35      2:g36      2:g37     
+  v drop   -10.5635u  189.3387u    7.3237 
+  current  346.0043p  346.0043p  493.3189p
 
 
 
@@ -115,10 +350,52 @@ Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hsp
  **** voltage-controlled voltage sources
 
 
- subckt     xopamp1 
- element  1:egnd    
-  volts      0.     
-  current -364.0773n
+ subckt     xopamp1    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  1:egnd     2:e53      2:e56      2:e75      2:e2       2:e3      
+  volts      0.         8.3763m    8.3766m  664.6700m   -9.0000     9.0000 
+  current -579.1247n   -8.3763n   -8.3766n   -1.3293n    5.7556m   -5.7567m
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:e4       2:e5       2:e6       2:e7       2:e10      2:e11     
+  volts      0.         9.0000    -9.0000    89.3876u  429.0174p  -80.9919u
+  current -320.3883p   -8.9991u    8.9991u  -89.3786p -322.7545p -322.6735p
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:e12      2:e14      2:e17      2:e18      2:e20      2:e48     
+  volts     22.4978u    9.0000   -10.5635u  189.3387u  302.6325n   29.9999 
+  current -350.0267p    6.3668p   99.9510n  -99.9511n  -29.9999p  -29.9999p
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:e49      2:e50      2:e51      2:e52      2:e54      2:e55     
+  volts    -29.9999   999.9959m  930.7178u    8.9998   930.7175u    9.0002 
+  current   29.9999p -999.9959p -930.7178p   -8.9998u -930.7175p   -9.0002u
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:e63      2:e64      2:e65      2:e66      2:e67      2:e68     
+  volts    157.7526     1.2892k   53.9672    15.7753     1.2892k   53.9672 
+  current -157.7526u -127.3460m   -3.8282m  -15.7753u -127.3460m   -3.8282m
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:e69      2:e76      2:e79      2:e80      2:e81      2:e83     
+  volts     28.7081    54.0000m  -63.9158m  -63.9158m  189.3445u  -63.9158m
+  current   16.7242m   -1.3293u   70.8895p   71.1899p -568.0321a  136.8112f
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:e84      2:e93      2:e94      2:e95      2:e96     
+  volts     63.9158m   28.1300   -49.2645m -999.9959m    0.     
+  current -137.1899f  -28.1300u   50.4538p  999.9918p    0.     
 
 
 
@@ -128,7 +405,7 @@ Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hsp
 
    subckt   xopamp1 
  element  1:fb      
-  current  648.7507n
+  current   -2.4059u
 
 
 
@@ -138,8 +415,8 @@ Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hsp
 
  subckt     xopamp1 
  element  1:hlim    
-  volts     -1.4612u
-  current    2.9225a
+  volts      4.6812u
+  current   -9.3624a
 
 
 
@@ -147,13 +424,91 @@ Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hsp
  **** diodes
 
 
- subckt     xopamp1    xopamp1    xopamp1    xopamp1    xopamp1 
- element  1:dc       1:de       1:dlp      1:dln      1:dp      
- model    1:dx       1:dx       1:dx       1:dx       1:dx      
-  id      -800.0000a -800.0000a -800.0000a -800.0000a -800.0000a
-  vd        -6.8000    -6.8000   -30.0000   -30.0000   -18.0000 
-  req        0.         0.         0.         0.         0.     
+ subckt     xopamp1    xopamp1    xopamp1    xopamp1    xopamp1    xbuffer 
+ element  1:dc       1:de       1:dlp      1:dln      1:dp       2:d5      
+ model    1:dx       1:dx       1:dx       1:dx       1:dx       2:dd      
+  id      -800.0000a -800.0000a -800.0000a -800.0000a -800.0000a  -10.0000f
+  vd        -7.8000    -8.1000   -40.0000   -40.0000   -18.0000    -8.9998 
+  req        0.         0.         0.         0.         0.         0.     
+  cap        0.         0.         0.         0.         0.         0.     
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:d6       2:d7       2:d8       2:d9       2:d10      2:d11     
+ model    2:dd       2:din      2:din      2:dvn      2:dvn      2:dd      
+  id       -10.0000f  100.0000u  100.0000u  100.0000u  100.0000u  -10.0000f
+  vd        -9.0002   591.5766m  591.5766m  709.8919m  709.8919m   -9.0000 
+  req        0.       256.9184   256.9184   256.9184   256.9184     0.     
+  cap        0.         0.         0.         0.         0.         0.     
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:d12      2:d13      2:d19      2:d24      2:d25      2:d26     
+ model    2:dd       2:dd       2:dd       2:dd       2:dd       2:dd      
+  id       -10.0000f  559.6927f  997.6093u   -9.9902f  127.3447m  -10.0000f
+  vd        -9.0000   103.8596m  650.6727m -178.0257m  775.2600m  -30.7753 
+  req        0.        45.0977g   25.7534   2.625e+15  201.7504m    0.     
+  cap        0.         0.         0.         0.         0.         0.     
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:d27      2:d28      2:d29      2:d30      2:d31      2:d32     
+ model    2:dd       2:dd       2:dd       2:dd       2:dd       2:dd      
+  id         3.9703m  -10.0000f   -9.9897f  127.3447m  -10.0000f    3.9703m
+  vd       686.1590m  -30.6862  -176.7305m  775.2600m  -30.7753   686.1590m
+  req        6.4711     0.       2.496e+15  201.7504m    0.         6.4711 
+  cap        0.         0.         0.         0.         0.         0.     
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:d33      2:d34      2:d36      2:d37      2:d38      2:d39     
+ model    2:dd       2:dd       2:dd       2:dd       2:dd       2:dd      
+  id       -10.0000f    1.0001m  559.6927f  -10.0000f  -10.0000f    1.0000m
+  vd       -30.6862   650.7356m  103.8596m   -6.9637    -7.2641   650.7342m
+  req        0.        25.6905    45.0977g    0.         0.        25.6918 
+  cap        0.         0.         0.         0.         0.         0.     
+
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:d40      2:d41      2:d44      2:d45      2:d46     
+ model    2:dd       2:dd       2:dd       2:dd       2:dd      
+  id        -9.1691f   -9.1691f    1.0000m  -10.0000f    1.0000m
+  vd       -63.9158m  -63.9158m  650.7355m   -1.1793   650.7355m
+  req      3.091e+13  3.091e+13   25.6906     0.        25.6906 
   cap        0.         0.         0.         0.         0.     
+
+
+
+
+ **** bipolar junction transistors
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:q20      2:q15      2:q21      2:q22      2:q23      2:q24     
+ model    2:qnl      2:qpl      2:qno      2:qpo      2:qpo      2:qno     
+  ib       -99.9297a   99.9297a    2.0683u   -2.0683u   -2.2127u    2.2127u
+  ic       207.0251a -207.0251a  930.7178u -930.7174u -995.7149u  995.7149u
+  vbe        1.7443m   -1.7443m  767.2049m -767.2049m -768.9392m  768.9392m
+  vce      665.0896m -665.0896m    8.9980    -8.9984    -9.7691     9.7687 
+  vbc     -663.3453m  663.3453m   -8.2308     8.2311     9.0002    -8.9998 
+  vs      -665.2790m    1.5550m   -8.9999   768.7599m -189.3445u   -9.0000 
+  power    137.5160a  137.5160a    8.3762m    8.3765m    9.7290m    9.7286m
+  betad     -2.0717    -2.0717   450.0000   450.0000   450.0000   450.0000 
+  gm         4.0150f    4.0150f   36.2262m   36.2262m   38.7561m   38.7561m
+  rpi      2.400e+16  2.400e+16   12.4220k   12.4220k   11.6111k   11.6111k
+  rx         0.         0.         0.         0.         0.         0.     
+  ro       6.633e+15  6.633e+15  8.230e+16  8.231e+16  9.000e+16  8.999e+16
+  cpi        0.         0.         0.         0.         0.         0.     
+  cmu        0.         0.         0.         0.         0.         0.     
+  cbx        0.         0.         0.         0.         0.         0.     
+  ccs        0.         0.         0.         0.         0.         0.     
+  betaac    96.3812    96.3812   450.0000   450.0000   450.0000   450.0000 
+  ft       615.0100m  615.0100m  5.765e+12  5.765e+12  6.168e+12  6.168e+12
 
 
 
@@ -164,16 +519,122 @@ Using: /usr/bin/time -p /usr/ece/synopsys/hspice_vD-2010.03-SP1/hspice/linux/hsp
  subckt     xopamp1    xopamp1 
  element  1:j1       1:j2      
  model    1:jx       1:jx      
-  ids      -97.6825u  -97.6831u
-  igs       12.5000p   12.5000p
-  igd       12.5000p   12.5000p
-  vgs      375.0411m  375.0392m
-  vds       -8.2796    -8.2795 
-  gm       312.7608u  312.7617u
+  ids      -80.2858u  -80.2887u
+  igs        2.5000f    2.5000f
+  igd        2.5000f    2.5000f
+  vgs      718.0588m  718.0537m
+  vds       -8.0820    -8.0820 
+  gm       569.8061u  569.8163u
   gmbs       0.         0.     
   gds        0.         0.     
   cgs        0.         0.     
   cgd        0.         0.     
+
+
+
+
+ **** jfets
+
+
+ subckt     xbuffer    xbuffer    xbuffer    xbuffer 
+ element  2:j1       2:j2       2:j3       2:j4      
+ model    2:jc       2:jc       2:jc       2:jc      
+  ids        0.         0.         0.         0.     
+  igs      -10.0000f  -10.0000f  -10.0000f  -10.0000f
+  igd      -10.0000f  -10.0000f  -10.0000f  -10.0000f
+  vgs       -9.0000    -8.9998    -6.0002    -6.0000 
+  vds        0.         0.         0.         0.     
+  gm         0.         0.         0.         0.     
+  gmbs       0.         0.         0.         0.     
+  gds        0.         0.         0.         0.     
+  cgs        0.         0.         0.         0.     
+  cgd        0.         0.         0.         0.     
+
+
+
+
+
+ **** mosfets
+
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:m4       2:m5       2:m19      2:m23      2:m41      2:m42     
+ model    2:pin      2:pin      2:pin      2:pin      2:psw      2:nsw     
+ region     Saturati   Saturati   Saturati   Saturati     Cutoff     Cutoff
+  id      -399.9978u -399.9979u -799.9957u -799.9957u    0.         0.     
+  ibs        0.         0.         0.         0.      -6.834e-26  3.417e-26
+  ibd       92.7479f   92.7479f   57.2442f   10.0984f  8.779e-28 -1.756e-27
+  vgs       -1.4746    -1.4746    -1.0098    -1.0098    14.9999   -14.9999 
+  vds       -9.2748    -9.2748    -5.7244    -1.0098    -2.6337n    2.6337n
+  vbs        0.         0.         0.         0.        -1.7558n  877.8809p
+  vth     -700.0000m -700.0000m -700.0000m -700.0000m   -7.5000     7.5000 
+  vdsat   -774.5945m -774.5946m -309.8378m -309.8378m    0.         0.     
+  vod     -774.5945m -774.5946m -309.8378m -309.8378m   22.4999   -22.4999 
+  beta       1.3333m    1.3333m   16.6667m   16.6667m   20.0000m   13.3333m
+  gam eff  527.6252m  527.6252m  527.6252m  527.6252m  527.6252m  527.6252m
+  gm         1.0328m    1.0328m    5.1640m    5.1640m    0.         0.     
+  gds        0.         0.         0.         0.         0.         0.     
+  gmb      357.8116u  357.8116u    1.7891m    1.7891m    0.         0.     
+  cdtot    256.2188a  256.2188a    7.9069f    1.3949f    5.4119a    3.6080a
+  cgtot     14.2030f   14.2030f  714.7019f  708.1899f   77.7088f   51.8059f
+  cstot     13.8126f   13.8126f  690.6322f  690.6322f    7.6669a    5.1113a
+  cbtot    134.1841a  134.1841a   16.1628f   16.1628f   77.6957f   51.7972f
+  cgs       13.8126f   13.8126f  690.6322f  690.6322f    7.6669a    5.1113a
+  cgd      256.2188a  256.2188a    7.9069f    1.3949f    5.4119a    3.6080a
+
+
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:m43      2:m44      2:m45      2:m46      2:m57      2:m58     
+ model    2:nen      2:nen      2:pen      2:pen      2:pin      2:nin     
+ region       Linear     Cutoff   Saturati     Linear     Linear     Cutoff
+  id         1.7995m    0.      -199.2845n -111.8745p   -1.2489u    0.     
+  ibs        0.         0.         0.         0.         0.         0.     
+  ibd     -5.142e-21 -1.000e-18  7.141e-19  3.963e-24   54.7162a -179.9453f
+  vgs       18.0000     5.1421m -714.1168m -714.1168m  -17.8218   178.1633m
+  vds        5.1421m  999.9970m -714.1168m   -3.9630u   -5.4716m   17.9945 
+  vbs        0.         0.         0.         0.         0.         0.     
+  vth      500.0000m  500.0000m -700.0000m -700.0000m -700.0000m  700.0000m
+  vdsat      5.1421m    0.       -14.1168m   -3.9630u   -5.4716m    0.     
+  vod       17.5000  -494.8579m  -14.1168m  -14.1168m  -17.1218  -521.8367m
+  beta      20.0000m  200.0000m    2.0000m    2.0000m   13.3333u   13.3333u
+  gam eff  527.6252m  527.6252m  527.6252m  527.6252m  527.6252m  527.6252m
+  gm       102.8429u    0.        28.2336u    7.9260n   72.9549n    0.     
+  gds      349.8971m    0.         0.        28.2257u  228.2182u    0.     
+  gmb       35.6300u    0.         9.7816u    2.7460n   25.2753n    0.     
+  cdtot    155.3770f  160.9680a  118.3661a   17.1484f  414.3352a  1.835e-19
+  cgtot    310.8758f    1.1798p  101.7454f   56.5375f  829.0074a   80.4062a
+  cstot    155.4075f   80.4842f   82.8759f   20.6378f  414.4235a    5.0985a
+  cbtot     91.2860a    1.0992p   18.7512f   18.7512f  2.488e-19   75.1243a
+  cgs      155.4075f   80.4842f   82.8759f   20.6378f  414.4235a    5.0985a
+  cgd      155.3770f  160.9680a  118.3661a   17.1484f  414.3352a  1.835e-19
+
+
+
+ subckt   xbuffer    xbuffer    xbuffer    xbuffer    xbuffer    xbuffer   
+ element  2:m59      2:m64      2:m65      2:m66      2:m67      2:m68     
+ model    2:nin      2:nin      2:nin      2:nin      2:pin      2:pin     
+ region       Linear     Linear     Cutoff     Cutoff     Linear   Saturati
+  id       179.9986u  179.9857u    0.         0.       455.1435p  -49.7054n
+  ibs        0.         0.         0.         0.         0.         0.     
+  ibd       -1.3753a  -14.3277a -179.9999f -180.0000f -154.4637a    7.8635f
+  vgs      157.7526    15.7753   178.1633m  178.1633m -786.3470m -786.3470m
+  vds      137.5325u    1.4328m   18.0000    18.0000   393.8120u -786.3470m
+  vbs        0.         0.         0.         0.         0.         0.     
+  vth      700.0000m  700.0000m  700.0000m  700.0000m -699.8636m -700.0000m
+  vdsat    137.5325u    1.4328m    0.         0.      -393.8120u  -86.3470m
+  vod      157.0526    15.0753  -521.8367m -521.8367m  -86.4835m  -86.3470m
+  beta       8.3333m    8.3333m   26.6667u  133.3333u   13.3333u   13.3333u
+  gam eff  527.6252m  527.6252m  527.6252m  527.6252m  527.6252m  527.6252m
+  gm         1.1461u   11.9397u    0.         0.         5.2508n    1.1513u
+  gds        1.3088   125.6152m    0.         0.         1.1531u    0.     
+  gmb      397.0685n    4.1365u    0.         0.         1.8198n  398.8663n
+  cdtot     64.7468f   64.7447f  3.671e-19    1.8354a  372.5983a  8.689e-19
+  cgtot    129.4978f  129.5377f  160.8126a  804.0630a  780.5999a  593.4781a
+  cstot     64.7468f   64.7488f   10.1969a   50.9845a  368.0871a  552.5058a
+  cbtot      4.2425a   44.1455a  150.2486a  751.2430a   39.9145a   40.1034a
+  cgs       64.7468f   64.7488f   10.1969a   50.9845a  368.0871a  552.5058a
+  cgd       64.7468f   64.7447f  3.671e-19    1.8354a  372.5983a  8.689e-19
 
 
 
@@ -185,64 +646,64 @@ x
 
         freq       gain    
                            
-    1.00000      -3.2297   
-    1.25893      -1.2418   
-    1.58489     739.1700m  
-    1.99526       2.7092   
-    2.51189       4.6620   
-    3.16228       6.5883   
-    3.98107       8.4740   
-    5.01187      10.2988   
-    6.30957      12.0349   
-    7.94328      13.6469   
-   10.00000      15.0951   
-   12.58925      16.3430   
-   15.84893      17.3669   
-   19.95262      18.1644   
-   25.11886      18.7552   
-   31.62278      19.1740   
-   39.81072      19.4607   
-   50.11872      19.6519   
-   63.09573      19.7770   
-   79.43282      19.8578   
-  100.00000      19.9095   
-  125.89254      19.9425   
-  158.48932      19.9635   
-  199.52623      19.9767   
-  251.18864      19.9851   
-  316.22777      19.9904   
-  398.10717      19.9938   
-  501.18723      19.9959   
-  630.95734      19.9972   
-  794.32823      19.9981   
-    1.00000k     19.9986   
-    1.25893k     19.9989   
-    1.58489k     19.9990   
-    1.99526k     19.9991   
-    2.51189k     19.9991   
-    3.16228k     19.9990   
-    3.98107k     19.9988   
-    5.01187k     19.9984   
-    6.30957k     19.9978   
-    7.94328k     19.9968   
-   10.00000k     19.9951   
-   12.58925k     19.9926   
-   15.84893k     19.9886   
-   19.95262k     19.9822   
-   25.11886k     19.9720   
-   31.62278k     19.9561   
-   39.81072k     19.9308   
-   50.11872k     19.8912   
-   63.09573k     19.8290   
-   79.43282k     19.7323   
-  100.00000k     19.5832   
-  125.89254k     19.3570   
-  158.48932k     19.0208   
-  199.52623k     18.5358   
-  251.18864k     17.8627   
-  316.22777k     16.9711   
-  398.10717k     15.8487   
-  501.18723k     14.5057   
+    1.00000      -5.7199   
+    1.25893      -3.7272   
+    1.58489      -1.7388   
+    1.99526     242.8905m  
+    2.51189       2.2141   
+    3.16228       4.1688   
+    3.98107       6.0980   
+    5.01187       7.9880   
+    6.30957       9.8193   
+    7.94328      11.5646   
+   10.00000      13.1893   
+   12.58925      14.6538   
+   15.84893      15.9208   
+   19.95262      16.9652   
+   25.11886      17.7824   
+   31.62278      18.3904   
+   39.81072      18.8229   
+   50.11872      19.1199   
+   63.09573      19.3182   
+   79.43282      19.4482   
+  100.00000      19.5322   
+  125.89254      19.5860   
+  158.48932      19.6203   
+  199.52623      19.6420   
+  251.18864      19.6555   
+  316.22777      19.6639   
+  398.10717      19.6688   
+  501.18723      19.6713   
+  630.95734      19.6719   
+  794.32823      19.6708   
+    1.00000k     19.6678   
+    1.25893k     19.6621   
+    1.58489k     19.6526   
+    1.99526k     19.6373   
+    2.51189k     19.6129   
+    3.16228k     19.5744   
+    3.98107k     19.5140   
+    5.01187k     19.4199   
+    6.30957k     19.2748   
+    7.94328k     19.0543   
+   10.00000k     18.7262   
+   12.58925k     18.2521   
+   15.84893k     17.5929   
+   19.95262k     16.7179   
+   25.11886k     15.6143   
+   31.62278k     14.2924   
+   39.81072k     12.7813   
+   50.11872k     11.1193   
+   63.09573k      9.3446   
+   79.43282k      7.4891   
+  100.00000k      5.5766   
+  125.89254k      3.6227   
+  158.48932k      1.6361   
+  199.52623k   -380.5306m  
+  251.18864k     -2.4303   
+  316.22777k     -4.5223   
+  398.10717k     -6.6724   
+  501.18723k     -8.9037   
 y
 
           ***** job concluded
@@ -272,12 +733,12 @@ y
 
 
   ******  Circuit Statistics  ******
-  # nodes       =      22 # elements   =      37
-  # resistors   =      12 # capacitors =       3 # inductors   =       0
-  # mutual_inds =       0 # vccs       =       2 # vcvs        =       1
-  # cccs        =       1 # ccvs       =       1 # volt_srcs   =       9
-  # curr_srcs   =       1 # diodes     =       5 # bjts        =       0
-  # jfets       =       2 # mosfets    =       0 # U elements  =       0
+  # nodes       =     154 # elements   =     318
+  # resistors   =     116 # capacitors =      30 # inductors   =       0
+  # mutual_inds =       0 # vccs       =      15 # vcvs        =      41
+  # cccs        =       1 # ccvs       =       1 # volt_srcs   =      34
+  # curr_srcs   =      15 # diodes     =      35 # bjts        =       6
+  # jfets       =       6 # mosfets    =      18 # U elements  =       0
   # T elements  =       0 # W elements =       0 # B elements  =       0
   # S elements  =       0 # P elements =       0 # va device   =       0
 
@@ -285,19 +746,19 @@ y
   ******  Runtime Statistics (seconds)  ******
 
   analysis           time    # points   tot. iter  conv.iter
-  op point           0.00           1          26
-  ac analysis        0.00          58          58
-  readin             0.00
+  op point           0.05           1         516
+  ac analysis        0.01          58          58
+  readin             0.02
   errchk             0.00
-  setup              0.01
+  setup              0.00
   output             0.00
 
 
-           total memory used          177  kbytes
-           total cpu time            0.01 seconds
-           total elapsed time        0.14 seconds
-           job started at     18:34:21 04/17/2014
-           job ended   at     18:34:22 04/17/2014
+           total memory used          722  kbytes
+           total cpu time            0.08 seconds
+           total elapsed time        0.28 seconds
+           job started at     23:20:31 05/03/2014
+           job ended   at     23:20:32 05/03/2014
 
 
  lic: Release hspice token(s) 

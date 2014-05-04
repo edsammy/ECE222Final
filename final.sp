@@ -13,12 +13,12 @@
 
 *  	 node
 *input -  1
-*output - 5
+*output - 9
 
 *include library files
 .include '../sedra_lib.lib'
 *.include 'OPamps/LF411C.lib'
-.include 'OPamps/BUF634.LIB'
+.include 'OPamps/OPA551.LIB'
 .include 'OPamps/OPA2134.LIB'
 
 *DC Sources
@@ -30,14 +30,14 @@ Vsweep 1 0 AC 1V
 *OP amps
 *Xopamp1 3 4 8 7 6 LF411C
 Xopamp1 3 4 8 7 6 OPA2134
-*Xbuffer 6 9 8 7 9 BUF634
+Xbuffer 6 9 8 7 9 10 OPA551
 
 *R values
 R1 1 2 10k
 R2 3 0 75k
 R3 4 0 1k
 R4 4 5 10k
-R5 6 5 1
+R5 6 5 .0001
 
 *C values
 C1 2 3 .1u
@@ -46,7 +46,7 @@ C2 3 0 0.0009u
 *analysis
 .OP
 .AC DEC 10 1 500k
-.PRINT gain = PAR('Vdb(5)-Vdb(1)')
+.PRINT gain = PAR('Vdb(9)-Vdb(1)')
 
 .OPTION NOMOD POST
 .END
